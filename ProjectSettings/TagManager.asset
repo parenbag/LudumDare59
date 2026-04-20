@@ -3,17 +3,21 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 3
-  tags: []
+  tags:
+  - Battery
+  - Deck
+  - Item
+  - SunBattery
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Player
   - Water
   - UI
+  - ItemDrag
   - 
-  - 
-  - 
+  - Ground
   - 
   - 
   - 
