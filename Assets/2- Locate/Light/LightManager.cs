@@ -19,6 +19,11 @@ public class LightManager : MonoBehaviour
  
         objectsToToggle[0].SetActive(deckManager.StationPower);
 
+        if (Room1 != true)
+            return;
+
+        objectsToToggle[1].SetActive(deckManager.StationPower);
+
 
     }
 

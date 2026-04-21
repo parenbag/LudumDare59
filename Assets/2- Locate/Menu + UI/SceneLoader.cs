@@ -2,12 +2,56 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Collections;
 
-public class SceneLoader 
+public class SceneLoader : MonoBehaviour
 {
-    public static IEnumerator LoadAsync(int sceneName)
+    public static SceneLoader Instance;
+
+    private AsyncOperation loadingOperation;
+
+    private void Awake()
     {
-        yield return new WaitForSeconds(2f);
-        AsyncOperation waitLoading = SceneManager.LoadSceneAsync(sceneName);
-        yield return new WaitUntil(() => waitLoading.isDone);
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
+
+    void Start()
+    {
+        PreloadScene(2);
+    }
+
+    public void PreloadScene(int sceneIndex)
+    {
+        StartCoroutine(LoadSceneCoroutine(sceneIndex));
+    }
+
+    private IEnumerator LoadSceneCoroutine(int sceneIndex)
+    {
+        loadingOperation = SceneManager.LoadSceneAsync(sceneIndex);
+        loadingOperation.allowSceneActivation = false;
+
+        while (loadingOperation.progress < 0.9f)
+        {
+            yield return null;
+        }
+    }
+
+    
+    public void ActivateScene()
+    {
+        if (loadingOperation != null)
+        {
+            loadingOperation.allowSceneActivation = true;
+        }
+        else
+        {
+            Debug.LogWarning("—цена ещЄ не загружена!");
+        }
     }
 }

@@ -8,6 +8,8 @@ TagManager:
   - Deck
   - Item
   - SunBattery
+  - StickPart1
+  - StickPart2
   layers:
   - Default
   - TransparentFX

@@ -5,6 +5,6 @@ public class Loading : MonoBehaviour
     void Start()
     {
         
-        StartCoroutine(SceneLoader.LoadAsync(2));
+       // StartCoroutine(SceneLoader.LoadAsync(2));
     }
 }
