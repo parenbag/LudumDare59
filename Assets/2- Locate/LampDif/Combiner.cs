@@ -2,6 +2,10 @@ using UnityEngine;
 
 public class Combiner : MonoBehaviour
 {
+    public DeckManager _deckManager;
+    public CodeLockLogic _codeLockLogic;
+
+
     public GameObject part1;
     public GameObject part2;
 
@@ -13,6 +17,25 @@ public class Combiner : MonoBehaviour
     {
         part1.SetActive(false);
         part2.SetActive(false);
+    }
+
+    void Update()
+    {
+        if (_deckManager.StationPower)
+        {
+            if (part1.activeSelf && part2.activeSelf)
+            {
+                _codeLockLogic.IsPowerActive = true; 
+            }
+            else
+            {
+                _codeLockLogic.IsPowerActive = false;
+            }
+        }
+        else
+        {
+            _codeLockLogic.IsPowerActive = false;
+        }
     }
 
     void OnTriggerEnter(Collider other)
@@ -31,3 +54,7 @@ public class Combiner : MonoBehaviour
 
     
 }
+
+
+//IsPowerActive - CodeLockLogic
+// StationPower - DeckManager

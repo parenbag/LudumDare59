@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: M_LVL_Pref
+  m_Name: PBR
   m_Shader: {fileID: -6465566751694194690, guid: d48d59fac8eb46c408723bcadfedcb84, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -40,7 +40,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Base_Color:
-        m_Texture: {fileID: 2800000, guid: 37045f9ad6082f045bfee6239953b393, type: 3}
+        m_Texture: {fileID: 2800000, guid: 5fe5ab7febab23045994ad600b6c858d, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BentNormalMap:
@@ -64,7 +64,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Emmision:
-        m_Texture: {fileID: 2800000, guid: e02b797a3ad13b948a4f2b724bb93a0b, type: 3}
+        m_Texture: {fileID: 2800000, guid: 47dfedd614993774c808089cb94474d7, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _HeightMap:
@@ -96,11 +96,11 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Normal_Map:
-        m_Texture: {fileID: 2800000, guid: a8a9e2a0a631948418cb1917305676ff, type: 3}
+        m_Texture: {fileID: 2800000, guid: 6d6bf556e3b0c144490c50cc5cfdebd6, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _ORM:
-        m_Texture: {fileID: 2800000, guid: 8c48e679405faa945a3c8b4abd962aa6, type: 3}
+        m_Texture: {fileID: 2800000, guid: aeb4a45454cbf0d4e927fa2820a51165, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _SpecularColorMap:
@@ -288,7 +288,7 @@ Material:
     - _UVMappingMaskEmissive: {r: 1, g: 0, b: 0, a: 0}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
---- !u!114 &6901245612084055433
+--- !u!114 &4342093059105940055
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}

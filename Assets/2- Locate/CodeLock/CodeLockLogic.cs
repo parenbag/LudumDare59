@@ -10,6 +10,7 @@ public class CodeLockLogic : MonoBehaviour
 
     public TextMeshProUGUI place;
 
+    public bool IsPowerActive = false;
 
     //TEST
 
@@ -26,12 +27,11 @@ public class CodeLockLogic : MonoBehaviour
     void GenerateCode()
     {
         currentCode = Random.Range(1000, 9999).ToString();
-        Debug.Log("Code: " + currentCode);
     }
 
     void Update()
     {
-        if (!playerInTrigger) return;
+        if (!playerInTrigger || !IsPowerActive) return;
 
         foreach (char c in Input.inputString)
         {
@@ -40,12 +40,12 @@ public class CodeLockLogic : MonoBehaviour
                 playerInput += c;
             }
 
-            if (c == '\b' && playerInput.Length > 0) // Backspace
+            if (c == '\b' && playerInput.Length > 0) 
             {
                 playerInput = playerInput.Substring(0, playerInput.Length - 1);
             }
 
-            if (c == '\n' || c == '\r') // Enter
+            if (c == '\n' || c == '\r') 
             {
                 CheckCode();
             }
@@ -65,20 +65,18 @@ public class CodeLockLogic : MonoBehaviour
             WrongCode();
         }
 
-        playerInput = ""; // очистка после попытки
+        playerInput = "";
     }
 
     void CorrectCode()
     {
-        Debug.Log("Верно");
-        // твой метод
         door.SetActive(false);
     }
 
     void WrongCode()
     {
         Debug.Log("Неверно");
-        // твой метод
+        
     }
 
     private void OnTriggerEnter(Collider other)

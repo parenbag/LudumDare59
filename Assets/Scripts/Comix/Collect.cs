@@ -37,7 +37,7 @@ public class Collect : MonoBehaviour
         else
         {
 
-            SceneManager.LoadScene(2);
+            SceneLoader.Instance.ActivateScene();
 
         }
     }
