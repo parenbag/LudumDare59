@@ -1,139 +1,142 @@
 using UnityEngine;
 using TMPro;
 
+
 public class CodeLockLogic : MonoBehaviour
 {
-    [Header("Code Settings")]
-    [SerializeField] private int codeLength = 4;
-    private string currentCode;
+    public bool IsPowerActive = false;              // in combiner
+    [SerializeField] private DoorManager doorManager; // in door , doorManager.IsOpen
 
-    [Header("UI")]
     [SerializeField] private TextMeshProUGUI displayText;
-    [SerializeField] private TextMeshProUGUI debugCodeText;
+    [SerializeField] private TextMeshProUGUI trueCode;
 
-    [Header("Dependencies")]
-    [SerializeField] private DoorManager doorManager;
+    private string generatedCode;
+    private string currentInput = "";
 
-    [Header("State")]
-    public bool IsPowerActive = false; // для скриптов
-
-    private string playerInput = "";
-    private bool playerInTrigger = false;
-
-    private void Start()
+    void Start()
     {
         GenerateCode();
-
-        if (displayText != null)
-            displayText.text = "";
-
-        if (debugCodeText != null)
-            debugCodeText.text = currentCode; // для теста
-
-
     }
 
-    private void Update()
+    void GenerateCode()
     {
-        if (!playerInTrigger || !IsPowerActive)
-            return;
+        generatedCode = Random.Range(1000, 9999).ToString(); 
+        trueCode.text = generatedCode;
 
-        HandleInput();
-
-        if (displayText != null)
-            displayText.text = playerInput;
+    }
+    void CheckCode()
+    {
+        if (currentInput == trueCode.text)
+        {
+            OnCorrectCode();
+        }
+        else
+        {
+            OnWrongCode();
+        }
+        currentInput = "";
+        displayText.text = "";
     }
 
-    private void GenerateCode()
+
+
+
+    public void KeyNumber(int Num)
     {
-        currentCode = "";
+        currentInput += Num.ToString();
 
-        for (int i = 0; i < codeLength; i++)
-        {
-            currentCode += Random.Range(0, 10).ToString();
-        }
-    }
+        displayText.text = currentInput;
 
-    private void HandleInput()
-    {
-        
-        for (int i = 0; i <= 9; i++)
-        {
-            if (Input.GetKeyDown((KeyCode)((int)KeyCode.Alpha0 + i)) ||
-                Input.GetKeyDown((KeyCode)((int)KeyCode.Keypad0 + i)))
-            {
-                if (playerInput.Length < codeLength)
-                {
-                    playerInput += i.ToString();
-                }
-            }
-        }
-
-        if (Input.GetKeyDown(KeyCode.Backspace) && playerInput.Length > 0)
-        {
-            playerInput = playerInput.Substring(0, playerInput.Length - 1);
-        }
-
-        if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.KeypadEnter))
+        if (currentInput.Length >= 4)
         {
             CheckCode();
         }
     }
 
-    private void CheckCode()
+    void OnCorrectCode()
     {
-        if (playerInput == currentCode)
+
+        if (doorManager != null)
+            doorManager.IsOpen = true;
+    }
+
+    void OnWrongCode()
+    {
+        
+    }
+
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Player"))
         {
-            CorrectCode();
+           
         }
-        else
+    }
+
+    void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Player"))
         {
-            WrongCode();
+            
         }
-
-        playerInput = "";
     }
 
-    private void CorrectCode()
+
+    void Update()
     {
-        if (doorManager == null)
+        if (IsPowerActive == true)
         {
-            Debug.LogWarning("DoorManager not assigned!");
-            return;
+            if (Input.GetKeyDown(KeyCode.Alpha0) || Input.GetKeyDown(KeyCode.Keypad0))
+            {
+                KeyNumber(0);
+            }
+
+            if (Input.GetKeyDown(KeyCode.Alpha1) || Input.GetKeyDown(KeyCode.Keypad1))
+            {
+                KeyNumber(1);
+            }
+            if (Input.GetKeyDown(KeyCode.Alpha2) || Input.GetKeyDown(KeyCode.Keypad2))
+            {
+                KeyNumber(2);
+            }
+
+            if (Input.GetKeyDown(KeyCode.Alpha3) || Input.GetKeyDown(KeyCode.Keypad3))
+            {
+                KeyNumber(3);
+            }
+
+            if (Input.GetKeyDown(KeyCode.Alpha4) || Input.GetKeyDown(KeyCode.Keypad4))
+            {
+                KeyNumber(4);
+            }
+
+            if (Input.GetKeyDown(KeyCode.Alpha5) || Input.GetKeyDown(KeyCode.Keypad5))
+            {
+                KeyNumber(5);
+            }
+
+            if (Input.GetKeyDown(KeyCode.Alpha6) || Input.GetKeyDown(KeyCode.Keypad6))
+            {
+                KeyNumber(6);
+            }
+
+            if (Input.GetKeyDown(KeyCode.Alpha7) || Input.GetKeyDown(KeyCode.Keypad7))
+            {
+                KeyNumber(7);
+            }
+
+            if (Input.GetKeyDown(KeyCode.Alpha8) || Input.GetKeyDown(KeyCode.Keypad8))
+            {
+                KeyNumber(8);
+            }
+
+            if (Input.GetKeyDown(KeyCode.Alpha9) || Input.GetKeyDown(KeyCode.Keypad9))
+            {
+                KeyNumber(9);
+            }
         }
-
-        doorManager.IsOpen = true;
-        Debug.Log("Code correct");
+       
     }
 
-    private void WrongCode()
-    {
-        Debug.Log("Wrong code");
-    }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if (!other.CompareTag("Player")) return;
-
-        playerInTrigger = true;
-
-        if (displayText != null)
-            displayText.gameObject.SetActive(true);
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
-        if (!other.CompareTag("Player")) return;
-
-        playerInTrigger = false;
-        playerInput = "";
-
-        if (displayText != null)
-            displayText.gameObject.SetActive(false);
-    }
-
-    public void SetPower(bool state)
-    {
-        IsPowerActive = state;
-    }
 }
