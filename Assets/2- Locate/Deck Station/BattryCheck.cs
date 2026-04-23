@@ -1,5 +1,6 @@
 using UnityEngine;
 
+
 public class BattryCheck : MonoBehaviour
 {
     public int ID_battery = 0; // 1 | 2
@@ -75,6 +76,7 @@ public class BattryCheck : MonoBehaviour
             {
                 return;
             }
+            deckManager.played = false;
         }
 
         if (other.CompareTag("SunBattery"))
@@ -91,6 +93,7 @@ public class BattryCheck : MonoBehaviour
             {
                 return;
             }
+            deckManager.played = false;
         }
 
     }

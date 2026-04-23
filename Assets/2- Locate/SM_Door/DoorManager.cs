@@ -3,11 +3,12 @@ using UnityEngine;
 public class DoorManager : MonoBehaviour
 {
     public Animator animator;
+    public bool IsOpen;
 
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player")) 
+        if (other.CompareTag("Player") && IsOpen) 
         {
             animator.SetBool("Open", true);
         }
@@ -15,7 +16,7 @@ public class DoorManager : MonoBehaviour
 
     void OnTriggerExit(Collider other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("Player") && IsOpen)
         {
             animator.SetBool("Open", false);
         }
