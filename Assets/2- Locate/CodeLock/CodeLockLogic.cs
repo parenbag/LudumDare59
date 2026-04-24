@@ -13,9 +13,13 @@ public class CodeLockLogic : MonoBehaviour
     private string generatedCode;
     private string currentInput = "";
 
+    bool OnColliderY;
+    [SerializeField] private GameObject TXT;
+
     void Start()
     {
         GenerateCode();
+        TXT.SetActive(false);
     }
 
     void GenerateCode()
@@ -69,7 +73,8 @@ public class CodeLockLogic : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-           
+            OnColliderY = true;
+            TXT.SetActive(true);
         }
     }
 
@@ -77,14 +82,15 @@ public class CodeLockLogic : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            
+            OnColliderY = false;
+            TXT.SetActive(false);
         }
     }
 
 
     void Update()
     {
-        if (IsPowerActive == true)
+        if (IsPowerActive == true && OnColliderY)
         {
             if (Input.GetKeyDown(KeyCode.Alpha0) || Input.GetKeyDown(KeyCode.Keypad0))
             {
