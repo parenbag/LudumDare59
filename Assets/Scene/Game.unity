@@ -3419,7 +3419,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3050202796310086481, guid: bfca7271710d38042b0d0201005edf23, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 5.157
+      value: 4.245
       objectReference: {fileID: 0}
     - target: {fileID: 3050202796310086481, guid: bfca7271710d38042b0d0201005edf23, type: 3}
       propertyPath: m_LocalPosition.y
@@ -15981,6 +15981,18 @@ PrefabInstance:
     - target: {fileID: 5611907776454650267, guid: 648e5808ed196ec4bbe04c43fbefa8f6, type: 3}
       propertyPath: m_Name
       value: CodeLock
+      objectReference: {fileID: 0}
+    - target: {fileID: 6229136055790663001, guid: 648e5808ed196ec4bbe04c43fbefa8f6, type: 3}
+      propertyPath: m_Size.z
+      value: 1.0210166
+      objectReference: {fileID: 0}
+    - target: {fileID: 6229136055790663001, guid: 648e5808ed196ec4bbe04c43fbefa8f6, type: 3}
+      propertyPath: m_Center.x
+      value: 8.5380704e-14
+      objectReference: {fileID: 0}
+    - target: {fileID: 6229136055790663001, guid: 648e5808ed196ec4bbe04c43fbefa8f6, type: 3}
+      propertyPath: m_Center.z
+      value: 0.5782521
       objectReference: {fileID: 0}
     - target: {fileID: 9170903034672178788, guid: 648e5808ed196ec4bbe04c43fbefa8f6, type: 3}
       propertyPath: m_IsActive

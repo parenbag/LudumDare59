@@ -90,7 +90,7 @@ public class CodeLockLogic : MonoBehaviour
 
     void Update()
     {
-        if (IsPowerActive == true && OnColliderY)
+        if (OnColliderY)
         {
             if (Input.GetKeyDown(KeyCode.Alpha0) || Input.GetKeyDown(KeyCode.Keypad0))
             {
